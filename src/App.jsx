@@ -36,9 +36,7 @@ const App = () => {
         setEventTitle(e.target.eventTitle.value);
         setDes(e.target.des.value);
         setDate(e.target.date.value);
-        setEventType(e.target.eventType.value);
-
-      // store the data 
+        setEventType(e.target.eventType.value); 
     };
 
     const handleImageChange = (e) => {
