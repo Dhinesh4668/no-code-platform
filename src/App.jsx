@@ -56,24 +56,33 @@ const App = () => {
     return (
         <center>
             <div>
-                <input type="color" value={textColor} onChange={(e) => handleColorChange(e.target.value)} />
-                <input type="color" value={backgroundColor} onChange={(e) => handleBackgroundChange(e.target.value)} />
-                <input type="file" accept="image/*" onChange={handleEventBackgroundChange} />
-                <select value={selectedTemplate} onChange={(e) => handleTemplateChange(e.target.value)}>
+                <label>text color: {''}</label>
+                <input type="color" value={textColor} onChange={(e) => handleColorChange(e.target.value)} /><br />
+                <lable>backgroundColor : {' '}</lable>
+                <input type="color" value={backgroundColor} onChange={(e) => handleBackgroundChange(e.target.value)} /><br />
+                <label>event banner: {' '}</label>
+                <input type="file" placeholder="event banner" accept="image/*" onChange={handleEventBackgroundChange} /><br />
+                <select value={selectedTemplate} onChange={(e) => handleTemplateChange(e.target.value)}><br />
                     <option value="default">Default Template</option>
                     <option value="another">Another Template</option>
                 </select>
 
                 <form onSubmit={handleDataSubmit}>
                     <input type="text" name="eventTitle" placeholder="Event Title" />
+                    <br />
                     <input type="text" name="des" placeholder="Event Description" />
-                    <input type="date" name="date" onChange={(e) => setDate(e.target.value)} />
+                    <br />
+                    <input type="date" name="event date" onChange={(e) => setDate(e.target.value)} />
+                    <br />
                     <input type="text" name="eventType" placeholder="Event Type" />
+                    <br />
                     <input type="file" accept="image/*" multiple onChange={handleImageChange} />
+                    <br />
                     {socialLinks.map((link, index) => (
                         <input key={index} type="text" value={link} onChange={(e) => handleSocialLinkChange(index, e.target.value)} placeholder="Social Link" />
                     ))}
                     <button type="button" onClick={() => setSocialLinks([...socialLinks, ''])}>Add Social Link</button>
+                    <br />
                     <button type="submit">Submit</button>
                 </form>
             </div>
