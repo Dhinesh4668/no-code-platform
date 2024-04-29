@@ -14,6 +14,7 @@ const App = () => {
     const [date, setDate] = useState('');
     const [eventType, setEventType] = useState('');
     const [socialLinks, setSocialLinks] = useState(['']);
+    const [link, setLink] = useState('')
 
     const handleColorChange = (color) => {
         setTextColor(color);
@@ -37,6 +38,7 @@ const App = () => {
         setDes(e.target.des.value);
         setDate(e.target.date.value);
         setEventType(e.target.eventType.value); 
+        
     };
 
     const handleImageChange = (e) => {
@@ -63,6 +65,13 @@ const App = () => {
                 <select value={selectedTemplate} onChange={(e) => handleTemplateChange(e.target.value)}><br />
                     <option value="default">Default Template</option>
                     <option value="another">Another Template</option>
+                    <option value="another">Another Template</option>
+                    <option value="another">Another Template</option>
+                    <option value="another">Another Template</option>
+                    <option value="another">Another Template</option>
+                    <option value="another">Another Template</option>
+                    <option value="another">Another Template</option>
+                    <option value="another">Another Template</option>
                 </select>
 
                 <form onSubmit={handleDataSubmit}>
@@ -76,6 +85,7 @@ const App = () => {
                     <br />
                     <input type="file" accept="image/*" multiple onChange={handleImageChange} />
                     <br />
+                    <input type='url' value={link} placeholder='event link' onChange={(e)=> setLink(e.target.value)} /><br />
                     {socialLinks.map((link, index) => (
                         <input key={index} type="text" value={link} onChange={(e) => handleSocialLinkChange(index, e.target.value)} placeholder="Social Link" />
                     ))}
@@ -85,17 +95,17 @@ const App = () => {
                 </form>
             </div>
 
-            {selectedTemplate === 'default' && (
+            {selectedTemplate && (
                 <div style={{ color: textColor, backgroundColor: backgroundColor }}>
                     <Template
                         title={eventTitle}
-                        link="#"
+                        link={link}
                         images={images}
                         description={des}
                         date={date}
                         eventType={eventType}
                         socials={socialLinks.filter(link => link.trim() !== '')}
-                        linkTitle="Learn More"
+                        linkTitle="Lean More"
                         eventBackground={eventBackground}
                     />
                 </div>
@@ -103,7 +113,6 @@ const App = () => {
 
             {selectedTemplate === 'another' && (
                 <div style={{ color: textColor, backgroundColor: backgroundColor }}>
-                    {/* Render another template */}
                 </div>
             )}
         </center>
